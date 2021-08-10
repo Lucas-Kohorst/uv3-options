@@ -8,9 +8,21 @@ import { TYPE } from 'theme'
 import Texture from '../../assets/images/sandtexture.webp'
 import { ExternalLink } from '../../theme'
 
-const CTASection = styled.section`
+const CTASection1 = styled.section`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 8px;
+
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  `};
+`
+
+const CTASection2 = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-top: 8px;
 
@@ -129,28 +141,61 @@ export default function CTACards() {
   return (
     <div>
       <MinimalNetworkAlert />
-      <CTASection>
-        <CTA1 href={'https://help.uniswap.org/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>
+      <CTASection1>
+        <CTA1
+          href={
+            'https://docs.google.com/document/d/16LEbrLyr_iTuPlPRSIvQJQM26Lk7EA-HVfVQK_8Zi5Q/edit#heading=h.r3az5z4wn0hi'
+          }
+        >
           <ResponsiveColumn>
             <HeaderText>
-              <Trans>Learn about providing liquidity</Trans> ↗
+              <Trans>Learn about the V3 Option Framework</Trans> ↗
             </HeaderText>
-            <TYPE.body fontWeight={300} style={{ alignItems: 'center', display: 'flex', maxWidth: '80%' }}>
-              <Trans>Check out our v3 LP walkthrough and migration guides.</Trans>
-            </TYPE.body>
           </ResponsiveColumn>
         </CTA1>
-        <CTA2 href={infoLink + 'pools'}>
+      </CTASection1>
+      <CTASection2>
+        <CTA2 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
           <ResponsiveColumn>
             <HeaderText style={{ alignSelf: 'flex-start' }}>
-              <Trans>Top pools</Trans> ↗
+              <Trans>Covered Call</Trans> ↗
             </HeaderText>
             <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
-              <Trans>Explore popular pools on Uniswap Analytics.</Trans>
+              <Trans>Emulate a covered call payoff with a range order</Trans>
             </TYPE.body>
           </ResponsiveColumn>
         </CTA2>
-      </CTASection>
+        <CTA2 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
+          <ResponsiveColumn>
+            <HeaderText style={{ alignSelf: 'flex-start' }}>
+              <Trans>Protected Put</Trans> ↗
+            </HeaderText>
+            <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
+              <Trans>Emulate a protected put payoff with a range order</Trans>
+            </TYPE.body>
+          </ResponsiveColumn>
+        </CTA2>
+        <CTA2 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
+          <ResponsiveColumn>
+            <HeaderText style={{ alignSelf: 'flex-start' }}>
+              <Trans>Strangle</Trans> ↗
+            </HeaderText>
+            <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
+              <Trans>Emulate a strangle payoff with a range order over multiple ticks</Trans>
+            </TYPE.body>
+          </ResponsiveColumn>
+        </CTA2>
+        <CTA2 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
+          <ResponsiveColumn>
+            <HeaderText style={{ alignSelf: 'flex-start' }}>
+              <Trans>Straddle</Trans> ↗
+            </HeaderText>
+            <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
+              <Trans>Emulate a straddle payoff with multiple range order</Trans>
+            </TYPE.body>
+          </ResponsiveColumn>
+        </CTA2>
+      </CTASection2>
     </div>
   )
 }

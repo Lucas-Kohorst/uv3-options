@@ -546,5 +546,27 @@ export function useRangeHopCallbacks(
     dispatch(setFullRange())
   }, [dispatch])
 
-  return { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange }
+  const setToPrice = useCallback(() => {
+    // given a price set tickLower to that price and tickUpper to that price
+    if (baseToken && quoteToken && typeof tickLower === 'number' && feeAmount) {
+      const price = tickToPrice(baseToken, quoteToken, tickLower)
+      // const tick = priceToClosestTick(price)
+      // console.log(price.baseCurrency)
+      // console.log(price.quoteCurrency)
+      // const testPrice = new Price(
+      //   price.baseCurrency,
+      //   price.quoteCurrency,
+      //   '10000000000000000000000000000',
+      //   1230 + '0000000000000000'
+      // )
+      // console.log('Price: ', price.toSignificant(5, undefined, Rounding.ROUND_UP))
+      // console.log('Test Price: ', testPrice.toSignificant(5, undefined, Rounding.ROUND_UP))
+      tickLower = tickUpper
+      return tickLower
+    }
+    return ''
+    // console.log(priceToClosestTick(price))
+  }, [baseToken, quoteToken, tickUpper, feeAmount, pool])
+
+  return { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange, setToPrice }
 }

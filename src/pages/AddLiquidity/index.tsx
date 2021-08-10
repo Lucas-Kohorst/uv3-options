@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, CurrencyAmount, Percent } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount, Percent, Token, Price } from '@uniswap/sdk-core'
 import { AlertTriangle } from 'react-feather'
 import ReactGA from 'react-ga'
 import { ZERO_PERCENT } from '../../constants/misc'
@@ -62,8 +62,8 @@ import { useV3PositionFromTokenId } from 'hooks/useV3Positions'
 import { useDerivedPositionInfo } from 'hooks/useDerivedPositionInfo'
 import { PositionPreview } from 'components/PositionPreview'
 import FeeSelector from 'components/FeeSelector'
-import RangeSelector from 'components/RangeSelector'
-import PresetsButtons from 'components/RangeSelector/PresetsButtons'
+import StrikeSelector from 'components/StrikeSelector'
+import CoveredCall, { ProtectedPut, Strangle, Straddle } from 'components/StrikeSelector/PresetsButtons'
 import RateToggle from 'components/RateToggle'
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddRemoveTabs } from 'components/NavigationTabs'
@@ -73,15 +73,29 @@ import LiquidityChartRangeInput from 'components/LiquidityChartRangeInput'
 import { SupportedChainId } from 'constants/chains'
 import OptimismDowntimeWarning from 'components/OptimismDowntimeWarning'
 import { CHAIN_INFO } from '../../constants/chains'
+import styled from 'styled-components/macro'
+import { ConsoleView } from 'react-device-detect'
 
 const DEFAULT_ADD_IN_RANGE_SLIPPAGE_TOLERANCE = new Percent(50, 10_000)
+
+const CTASection2 = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  `};
+`
 
 export default function AddLiquidity({
   match: {
     params: { currencyIdA, currencyIdB, feeAmount: feeAmountFromUrl, tokenId },
   },
   history,
-}: RouteComponentProps<{ currencyIdA?: string; currencyIdB?: string; feeAmount?: string; tokenId?: string }>) {
+}: RouteComponentProps<{ currencyIdA?: string; currencyIdB?: string; feeAmount?: string; tokenId?: string; }>) {
   const { account, chainId, library } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
   const toggleWalletModal = useWalletModalToggle() // toggle wallet when disconnected
@@ -445,10 +459,47 @@ export default function AddLiquidity({
 
   // get value and prices at ticks
   const { [Bound.LOWER]: tickLower, [Bound.UPPER]: tickUpper } = ticks
-  const { [Bound.LOWER]: priceLower, [Bound.UPPER]: priceUpper } = pricesAtTicks
+  const priceLower = pricesAtTicks.LOWER;
+  let priceUpper = pricesAtTicks.UPPER;
 
-  const { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange } =
+  console.log(priceLower);
+
+  // console.log
+
+  // const base: Token = new Token(
+  //   baseCurrency?.chainId ?? 1,
+  //   baseCurrency?.wrapped.address ?? "",
+  //   baseCurrency?.decimals ?? 0,
+  //   baseCurrency?.symbol ?? "",
+  // )
+
+  // console.log(base);
+
+  // const quote: Token = new Token(
+  //   quoteCurrency?.chainId ?? 1,
+  //   "",
+  //   quoteCurrency?.decimals ?? 0,
+  //   quoteCurrency?.symbol ?? "",
+  // )
+
+  // console.log
+
+  // console.log(baseCurrency)
+  // console.log(quoteCurrency)
+
+  // const p = new Price(
+  //   base,
+  //   quote,
+  //   "1000000000000000000",
+  //   "123000000000000000000"
+  // );
+  // console.log(priceLower?.toSignificant(3));
+
+  const { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange, setToPrice } =
     useRangeHopCallbacks(baseCurrency ?? undefined, quoteCurrency ?? undefined, feeAmount, tickLower, tickUpper, pool)
+
+  const setCoveredCallRange = (range: number) => { priceUpper = priceLower }
+  const setProtectedPutRange = (range: number) => { setToPrice() }
 
   // we need an existence check on parsed amounts for single-asset deposits
   const showApprovalA =
@@ -852,7 +903,7 @@ export default function AddLiquidity({
                                 </TYPE.label>
                               </RowBetween>
                             )}
-                            <RangeSelector
+                            <StrikeSelector
                               priceLower={priceLower}
                               priceUpper={priceUpper}
                               getDecrementLower={getDecrementLower}
@@ -867,11 +918,28 @@ export default function AddLiquidity({
                               ticksAtLimit={ticksAtLimit}
                             />
                             {!noLiquidity && (
-                              <PresetsButtons
-                                setFullRange={() => {
-                                  setShowCapitalEfficiencyWarning(true)
-                                }}
-                              />
+                              <CTASection2>
+                                <CoveredCall
+                                  setCoveredCallRange={() => {
+                                    setCoveredCallRange(15)
+                                  }}
+                                />
+                                <ProtectedPut
+                                  setProtectedPutRange={() => {
+                                    setProtectedPutRange(15)
+                                  }}
+                                />
+                                <Strangle
+                                  setStrangleRange={() => {
+                                    setShowCapitalEfficiencyWarning(true)
+                                  }}
+                                />
+                                <Straddle
+                                  setStraddleRange={() => {
+                                    setShowCapitalEfficiencyWarning(true)
+                                  }}
+                                />
+                              </CTASection2>
                             )}
                           </AutoColumn>
                         </StackedItem>
