@@ -27,7 +27,7 @@ import { useCurrency } from '../../hooks/Tokens'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
 import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 import { useWalletModalToggle } from '../../state/application/hooks'
-import { Field, Bound } from '../../state/mint/v3/actions'
+import { Field, Bound, setFullRange } from '../../state/mint/v3/actions'
 import { AddLiquidityNetworkAlert } from 'components/NetworkAlert/AddLiquidityNetworkAlert'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import { useIsExpertMode, useUserSlippageToleranceWithDefault } from '../../state/user/hooks'
@@ -459,47 +459,15 @@ export default function AddLiquidity({
 
   // get value and prices at ticks
   const { [Bound.LOWER]: tickLower, [Bound.UPPER]: tickUpper } = ticks
-  const priceLower = pricesAtTicks.LOWER;
-  let priceUpper = pricesAtTicks.UPPER;
+  const { [Bound.LOWER]: priceLower, [Bound.UPPER]: priceUpper } = pricesAtTicks
 
-  console.log(priceLower);
-
-  // console.log
-
-  // const base: Token = new Token(
-  //   baseCurrency?.chainId ?? 1,
-  //   baseCurrency?.wrapped.address ?? "",
-  //   baseCurrency?.decimals ?? 0,
-  //   baseCurrency?.symbol ?? "",
-  // )
-
-  // console.log(base);
-
-  // const quote: Token = new Token(
-  //   quoteCurrency?.chainId ?? 1,
-  //   "",
-  //   quoteCurrency?.decimals ?? 0,
-  //   quoteCurrency?.symbol ?? "",
-  // )
-
-  // console.log
-
-  // console.log(baseCurrency)
-  // console.log(quoteCurrency)
-
-  // const p = new Price(
-  //   base,
-  //   quote,
-  //   "1000000000000000000",
-  //   "123000000000000000000"
-  // );
-  // console.log(priceLower?.toSignificant(3));
-
-  const { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange, setToPrice } =
+  const { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange, setToPrice, setRange } =
     useRangeHopCallbacks(baseCurrency ?? undefined, quoteCurrency ?? undefined, feeAmount, tickLower, tickUpper, pool)
 
-  const setCoveredCallRange = (range: number) => { priceUpper = priceLower }
-  const setProtectedPutRange = (range: number) => { setToPrice() }
+  const setCoveredCallRange = (ticks: number) => { setToPrice(ticks) }
+  const setProtectedPutRange = (ticks: number) => { setToPrice(ticks) }
+  const setStrangleRange = (ticks: number) => { setRange(ticks) }
+  // const setStraddleRange = (range: number) => { setToPrice(1) }
 
   // we need an existence check on parsed amounts for single-asset deposits
   const showApprovalA =
@@ -921,24 +889,24 @@ export default function AddLiquidity({
                               <CTASection2>
                                 <CoveredCall
                                   setCoveredCallRange={() => {
-                                    setCoveredCallRange(15)
+                                    setCoveredCallRange(1)
                                   }}
                                 />
                                 <ProtectedPut
                                   setProtectedPutRange={() => {
-                                    setProtectedPutRange(15)
+                                    setProtectedPutRange(1)
                                   }}
                                 />
                                 <Strangle
                                   setStrangleRange={() => {
-                                    setShowCapitalEfficiencyWarning(true)
+                                    setStrangleRange(150)
                                   }}
                                 />
-                                <Straddle
+                                {/* <Straddle
                                   setStraddleRange={() => {
                                     setShowCapitalEfficiencyWarning(true)
                                   }}
-                                />
+                                /> */}
                               </CTASection2>
                             )}
                           </AutoColumn>

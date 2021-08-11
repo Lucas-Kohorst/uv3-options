@@ -1,2 +1,3 @@
 /src/state/data/generated.ts
 /src/pages/AddLiquidity/index.tsx
+/src/state/mint/v3/hooks.ts

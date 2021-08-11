@@ -546,27 +546,38 @@ export function useRangeHopCallbacks(
     dispatch(setFullRange())
   }, [dispatch])
 
-  const setToPrice = useCallback(() => {
+  // prettier-ignore
+  const setToPrice = useCallback(tickSpacing => {
     // given a price set tickLower to that price and tickUpper to that price
-    if (baseToken && quoteToken && typeof tickLower === 'number' && feeAmount) {
-      const price = tickToPrice(baseToken, quoteToken, tickLower)
-      // const tick = priceToClosestTick(price)
-      // console.log(price.baseCurrency)
-      // console.log(price.quoteCurrency)
-      // const testPrice = new Price(
-      //   price.baseCurrency,
-      //   price.quoteCurrency,
-      //   '10000000000000000000000000000',
-      //   1230 + '0000000000000000'
-      // )
-      // console.log('Price: ', price.toSignificant(5, undefined, Rounding.ROUND_UP))
-      // console.log('Test Price: ', testPrice.toSignificant(5, undefined, Rounding.ROUND_UP))
-      tickLower = tickUpper
-      return tickLower
+    if (baseToken && quoteToken && typeof tickLower === 'number' && typeof tickUpper === 'number' && feeAmount) {
+      const leftTickPrice = tickToPrice(baseToken, quoteToken, tickUpper)
+      const rightTickPrice = tickToPrice(baseToken, quoteToken, tickUpper - TICK_SPACINGS[feeAmount] * tickSpacing) // adding tick spacing`
+
+      dispatch(typeLeftRangeInput({ typedValue: leftTickPrice.toFixed(6) }))
+      dispatch(typeRightRangeInput({ typedValue: rightTickPrice.toFixed(6) }))
     }
     return ''
-    // console.log(priceToClosestTick(price))
   }, [baseToken, quoteToken, tickUpper, feeAmount, pool])
 
-  return { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange, setToPrice }
+
+  // prettier-ignore
+  const setRange = useCallback(tickSpacing => {
+    // given a price set tickLower to that price and tickUpper to that price
+    if (baseToken && quoteToken && typeof tickLower === 'number' && typeof tickUpper === 'number' && feeAmount) {
+      const leftTickPrice = tickToPrice(baseToken, quoteToken, tickUpper + TICK_SPACINGS[feeAmount] * tickSpacing) // adding tick spacing
+      const rightTickPrice = tickToPrice(baseToken, quoteToken, tickUpper - TICK_SPACINGS[feeAmount] * tickSpacing) // adding tick spacing
+
+      console.log(leftTickPrice.toFixed(6))
+      console.log(rightTickPrice.toFixed(6))
+
+      dispatch(typeLeftRangeInput({ typedValue: leftTickPrice.toFixed(6) }))
+      dispatch(typeRightRangeInput({ typedValue: rightTickPrice.toFixed(6) }))
+
+      // @TODO add in return to strike price
+      // tickUpper = rightTickPrice.toFixed(6) / 2
+    }
+    return ''
+  }, [baseToken, quoteToken, tickUpper, feeAmount, pool])
+
+  return { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange, setToPrice, setRange }
 }
