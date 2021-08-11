@@ -1,4 +1,8 @@
-# Uniswap Interface
+# Uniswap Option Interface
+
+Just like you would not compare an option expected value to the underlying, you should not compare being an LP to holding the underlying. They have different risk profiles. 
+
+Visualizing LP'ing in a framework of options can help with this. 
 
 [![Unit Tests](https://github.com/Uniswap/uniswap-interface/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/Uniswap/uniswap-interface/actions/workflows/unit-tests.yaml)
 [![Integration Tests](https://github.com/Uniswap/uniswap-interface/actions/workflows/integration-tests.yaml/badge.svg)](https://github.com/Uniswap/uniswap-interface/actions/workflows/integration-tests.yaml)
