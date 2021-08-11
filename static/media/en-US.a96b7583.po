@@ -153,7 +153,6 @@ msgstr "Add"
 msgid "Add Delegate +"
 msgstr "Add Delegate +"
 
-#: src/components/NavigationTabs/index.tsx
 #: src/pages/AddLiquidity/index.tsx
 msgid "Add Liquidity"
 msgstr "Add Liquidity"
@@ -1072,8 +1071,12 @@ msgid "More"
 msgstr "More"
 
 #: src/pages/Pool/index.tsx
-msgid "New Position"
-msgstr "New Position"
+msgid "New Option"
+msgstr "New Option"
+
+#: 
+#~ msgid "New Position"
+#~ msgstr "New Position"
 
 #: src/pages/MigrateV2/index.tsx
 msgid "No V2 Liquidity found."
@@ -1156,6 +1159,15 @@ msgstr "Optimistic Etherscan"
 msgid "Optimistic L2 Gateway"
 msgstr "Optimistic L2 Gateway"
 
+#: src/components/Header/index.tsx
+#: src/components/NavigationTabs/index.tsx
+msgid "Options"
+msgstr "Options"
+
+#: src/pages/Pool/index.tsx
+msgid "Options Overview"
+msgstr "Options Overview"
+
 #: src/components/Badge/RangeBadge.tsx
 msgid "Out of range"
 msgstr "Out of range"
@@ -1201,7 +1213,6 @@ msgstr "Please connect to the appropriate Ethereum network."
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "Please type the word \"{confirmWord}\" to enable expert mode."
 
-#: src/components/Header/index.tsx
 #: src/components/NavigationTabs/index.tsx
 msgid "Pool"
 msgstr "Pool"
@@ -1234,9 +1245,9 @@ msgstr "Pool tokens in rewards pool:"
 msgid "Pooled {0}:"
 msgstr "Pooled {0}:"
 
-#: src/pages/Pool/index.tsx
-msgid "Pools Overview"
-msgstr "Pools Overview"
+#: 
+#~ msgid "Pools Overview"
+#~ msgstr "Pools Overview"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2037,9 +2048,13 @@ msgstr "Your UNI Breakdown"
 msgid "Your V2 liquidity"
 msgstr "Your V2 liquidity"
 
+#: 
+#~ msgid "Your V3 liquidity positions will appear here."
+#~ msgstr "Your V3 liquidity positions will appear here."
+
 #: src/pages/Pool/index.tsx
-msgid "Your V3 liquidity positions will appear here."
-msgstr "Your V3 liquidity positions will appear here."
+msgid "Your V3 option positions will appear here."
+msgstr "Your V3 option positions will appear here."
 
 #: src/pages/Earn/Manage.tsx
 msgid "Your liquidity deposits"
@@ -2310,5 +2325,9 @@ msgid "~$ <0/>"
 msgstr "~$ <0/>"
 
 #: src/pages/Pool/PositionPage.tsx
-msgid "← Back to Pools Overview"
-msgstr "← Back to Pools Overview"
+msgid "← Back to Options Overview"
+msgstr "← Back to Options Overview"
+
+#: 
+#~ msgid "← Back to Pools Overview"
+#~ msgstr "← Back to Pools Overview"
