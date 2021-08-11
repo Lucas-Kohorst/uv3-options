@@ -10,3 +10,8 @@ Visualizing LP'ing in a framework of options can help with this.
 - [Rebalancing vs Passive strategies for Uniswap V3 liquidity pools](https://medium.com/@DeFiScientist/rebalancing-vs-passive-strategies-for-uniswap-v3-liquidity-pools-754f033bdabc)
 - [Uniswap V3: A Quant Framework to model yield farming returns](https://medium.com/@DeFiScientist/uniswap-v3-a-quant-framework-to-model-yield-farming-returns-941a1600425e)
 - [The Replicating Portfolio of a Constant Product Market with Bounded Liquidity](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3898384)
+
+### TODO
+- [ ] Tick Selector for Multi Tick calls/puts or strangles 
+- [ ] Fix strike price display 
+- [ ] Payoff Charts
