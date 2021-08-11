@@ -558,7 +558,7 @@ export function PositionPage({
           <AutoColumn gap="sm">
             <Link style={{ textDecoration: 'none', width: 'fit-content', marginBottom: '0.5rem' }} to="/pool">
               <HoverText>
-                <Trans>← Back to Pools Overview</Trans>
+                <Trans>← Back to Options Overview</Trans>
               </HoverText>
             </Link>
             <ResponsiveRow>

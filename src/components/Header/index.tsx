@@ -283,7 +283,7 @@ export default function Header() {
             pathname.startsWith('/find')
           }
         >
-          <Trans>Pool</Trans>
+          <Trans>Options</Trans>
         </StyledNavLink>
         {chainId && chainId === SupportedChainId.MAINNET && (
           <StyledNavLink id={`stake-nav-link`} to={'/vote'}>

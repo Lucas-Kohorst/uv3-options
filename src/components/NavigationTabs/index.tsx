@@ -145,7 +145,7 @@ export function AddRemoveTabs({
           {creating ? (
             <Trans>Create a pair</Trans>
           ) : adding ? (
-            <Trans>Add Liquidity</Trans>
+            <Trans> Options </Trans>
           ) : (
             <Trans>Remove Liquidity</Trans>
           )}

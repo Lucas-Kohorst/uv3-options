@@ -197,7 +197,7 @@ export default function Pool() {
           <AutoColumn gap="lg" style={{ width: '100%' }}>
             <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>
               <TYPE.body fontSize={'20px'}>
-                <Trans>Pools Overview</Trans>
+                <Trans>Options Overview</Trans>
               </TYPE.body>
               <ButtonRow>
                 {showV2Features && (
@@ -215,7 +215,7 @@ export default function Pool() {
                   />
                 )}
                 <ResponsiveButtonPrimary id="join-pool-button" as={Link} to="/add/ETH">
-                  + <Trans>New Position</Trans>
+                  + <Trans>New Option</Trans>
                 </ResponsiveButtonPrimary>
               </ButtonRow>
             </TitleRow>
@@ -247,7 +247,7 @@ export default function Pool() {
                   <TYPE.body color={theme.text3} textAlign="center">
                     <Inbox size={48} strokeWidth={1} style={{ marginBottom: '.5rem' }} />
                     <div>
-                      <Trans>Your V3 liquidity positions will appear here.</Trans>
+                      <Trans>Your V3 option positions will appear here.</Trans>
                     </div>
                   </TYPE.body>
                   {showConnectAWallet && (

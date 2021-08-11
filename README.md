@@ -15,3 +15,4 @@ Visualizing LP'ing in a framework of options can help with this.
 - [ ] Tick Selector for Multi Tick calls/puts or strangles 
 - [ ] Fix strike price display 
 - [ ] Payoff Charts
+- [ ] Covered Call in quote, protected put in base currency
