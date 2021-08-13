@@ -76,6 +76,8 @@ import { CHAIN_INFO } from '../../constants/chains'
 import styled from 'styled-components/macro'
 import { ConsoleView } from 'react-device-detect'
 
+import Slider from '@material-ui/core/Slider';
+
 const DEFAULT_ADD_IN_RANGE_SLIPPAGE_TOLERANCE = new Percent(50, 10_000)
 
 const CTASection2 = styled.section`
@@ -160,6 +162,11 @@ export default function AddLiquidity({
   // modal and loading
   const [showConfirm, setShowConfirm] = useState<boolean>(false)
   const [attemptingTxn, setAttemptingTxn] = useState<boolean>(false) // clicked confirm
+
+  function valuetext(value: number) {   
+    console.log(value)
+    return `${value}`;
+  }
 
   // capital efficiency warning
   const [showCapitalEfficiencyWarning, setShowCapitalEfficiencyWarning] = useState(false)
@@ -467,7 +474,12 @@ export default function AddLiquidity({
   const setCoveredCallRange = (ticks: number) => { setToPrice(ticks) }
   const setProtectedPutRange = (ticks: number) => { setToPrice(ticks) }
   const setStrangleRange = (ticks: number) => { setRange(ticks) }
-  // const setStraddleRange = (range: number) => { setToPrice(1) }
+
+  const [tickRangeValue, setTickRangeValue] = useState<number | string | Array<number | string>>(30);
+
+  const handleSliderChange = (event: any, newValue: number | number[]) => {
+    setTickRangeValue(newValue);
+  };
 
   // we need an existence check on parsed amounts for single-asset deposits
   const showApprovalA =
@@ -887,29 +899,44 @@ export default function AddLiquidity({
                             />
                             {!noLiquidity && (
                               <CTASection2>
-                                <CoveredCall
-                                  setCoveredCallRange={() => {
-                                    setCoveredCallRange(1)
-                                  }}
-                                />
-                                <ProtectedPut
-                                  setProtectedPutRange={() => {
-                                    setProtectedPutRange(1)
-                                  }}
-                                />
+                                {price && priceUpper && price?.invert()?.toSignificant(6) < priceUpper?.invert()?.toSignificant(6)
+                                ?
+                                  <CoveredCall
+                                    setCoveredCallRange={() => {
+                                      setCoveredCallRange(1)
+                                    }}
+                                  /> 
+                                : 
+                                  <ProtectedPut
+                                    setProtectedPutRange={() => {
+                                      setProtectedPutRange(1)
+                                    }}
+                                  /> 
+                                }
+
                                 <Strangle
                                   setStrangleRange={() => {
-                                    setStrangleRange(150)
+                                    setStrangleRange(typeof tickRangeValue === 'number' ? tickRangeValue : 0)
                                   }}
                                 />
-                                {/* <Straddle
-                                  setStraddleRange={() => {
-                                    setShowCapitalEfficiencyWarning(true)
-                                  }}
-                                /> */}
                               </CTASection2>
                             )}
                           </AutoColumn>
+
+                          <TYPE.main fontWeight={500} paddingTop="15px" paddingBottom="15px" fontSize={12} color="text1">
+                            Set Tick Range:
+                          </TYPE.main>
+
+                          <Slider
+                            value={typeof tickRangeValue === 'number' ? tickRangeValue : 0}
+                            onChange={handleSliderChange}
+                            valueLabelDisplay="auto"
+                            min={1}
+                            max={250}
+                            defaultValue={50} 
+                            step={1}
+                          />
+
                         </StackedItem>
 
                         {showCapitalEfficiencyWarning && (
