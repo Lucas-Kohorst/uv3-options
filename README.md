@@ -12,7 +12,7 @@ Visualizing LP'ing in a framework of options can help with this.
 - [The Replicating Portfolio of a Constant Product Market with Bounded Liquidity](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3898384)
 
 ### TODO
-- [ ] Tick Selector for Multi Tick calls/puts or strangles 
+- [x] Tick Selector for Multi Tick calls/puts or strangles 
 - [ ] Fix strike price display 
 - [ ] Payoff Charts
-- [ ] Covered Call in quote, protected put in base currency
+- [x] Covered Call in quote, protected put in base currency
