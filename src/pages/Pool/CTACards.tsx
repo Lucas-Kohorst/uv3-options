@@ -142,14 +142,10 @@ export default function CTACards() {
     <div>
       <MinimalNetworkAlert />
       <CTASection1>
-        <CTA1
-          href={
-            'https://docs.google.com/document/d/16LEbrLyr_iTuPlPRSIvQJQM26Lk7EA-HVfVQK_8Zi5Q/edit#heading=h.r3az5z4wn0hi'
-          }
-        >
+        <CTA1 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
           <ResponsiveColumn>
             <HeaderText>
-              <Trans>Learn about the V3 Option Framework</Trans> ↗
+              <Trans>V3 Option Framework</Trans>
             </HeaderText>
           </ResponsiveColumn>
         </CTA1>
@@ -158,7 +154,7 @@ export default function CTACards() {
         <CTA2 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
           <ResponsiveColumn>
             <HeaderText style={{ alignSelf: 'flex-start' }}>
-              <Trans>Covered Call</Trans> ↗
+              <Trans>Call</Trans> ↗
             </HeaderText>
             <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
               <Trans>Emulate a covered call payoff with a range order</Trans>
@@ -168,7 +164,7 @@ export default function CTACards() {
         <CTA2 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
           <ResponsiveColumn>
             <HeaderText style={{ alignSelf: 'flex-start' }}>
-              <Trans>Protected Put</Trans> ↗
+              <Trans>Put</Trans> ↗
             </HeaderText>
             <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
               <Trans>Emulate a protected put payoff with a range order</Trans>
@@ -182,16 +178,6 @@ export default function CTACards() {
             </HeaderText>
             <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
               <Trans>Emulate a strangle payoff with a range order over multiple ticks</Trans>
-            </TYPE.body>
-          </ResponsiveColumn>
-        </CTA2>
-        <CTA2 href={'#/add/ETH/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/3000'}>
-          <ResponsiveColumn>
-            <HeaderText style={{ alignSelf: 'flex-start' }}>
-              <Trans>Straddle</Trans> ↗
-            </HeaderText>
-            <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
-              <Trans>Emulate a straddle payoff with multiple range order</Trans>
             </TYPE.body>
           </ResponsiveColumn>
         </CTA2>

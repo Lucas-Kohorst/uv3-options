@@ -899,7 +899,9 @@ export default function AddLiquidity({
                             />
                             {!noLiquidity && (
                               <CTASection2>
-                                {price && priceUpper && price?.invert()?.toSignificant(6) < priceUpper?.invert()?.toSignificant(6)
+                                {price && priceUpper && 
+                                (invertPrice ? price.invert().toSignificant(6) : price.toSignificant(6)) < 
+                                (invertPrice ? priceUpper.invert().toSignificant(6) : priceUpper.toSignificant(6))
                                 ?
                                   <CoveredCall
                                     setCoveredCallRange={() => {
@@ -923,10 +925,11 @@ export default function AddLiquidity({
                             )}
                           </AutoColumn>
 
-                          <TYPE.main fontWeight={500} paddingTop="15px" paddingBottom="15px" fontSize={12} color="text1">
+                          <TYPE.main fontWeight={500} paddingTop="15px" paddingBottom ="15px" fontSize={12} color="text1">
                             Set Tick Range:
                           </TYPE.main>
 
+                          {/* @TODO: need to fix prices with invert so they wrk properly */}
                           <Slider
                             value={typeof tickRangeValue === 'number' ? tickRangeValue : 0}
                             onChange={handleSliderChange}
