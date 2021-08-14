@@ -321,6 +321,10 @@ msgstr "By adding this list you are implicitly trusting that the data is correct
 msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>Uniswap protocol disclaimer</1>."
 msgstr "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>Uniswap protocol disclaimer</1>."
 
+#: src/pages/Pool/CTACards.tsx
+msgid "Call"
+msgstr "Call"
+
 #: src/pages/Vote/styled.tsx
 msgid "Canceled"
 msgstr "Canceled"
@@ -527,7 +531,6 @@ msgid "Copy Address"
 msgstr "Copy Address"
 
 #: src/components/StrikeSelector/PresetsButtons.tsx
-#: src/pages/Pool/CTACards.tsx
 msgid "Covered Call"
 msgstr "Covered Call"
 
@@ -699,9 +702,9 @@ msgstr "Emulate a covered call payoff with a range order"
 msgid "Emulate a protected put payoff with a range order"
 msgstr "Emulate a protected put payoff with a range order"
 
-#: src/pages/Pool/CTACards.tsx
-msgid "Emulate a straddle payoff with multiple range order"
-msgstr "Emulate a straddle payoff with multiple range order"
+#: 
+#~ msgid "Emulate a straddle payoff with multiple range order"
+#~ msgstr "Emulate a straddle payoff with multiple range order"
 
 #: src/pages/Pool/CTACards.tsx
 msgid "Emulate a strangle payoff with a range order over multiple ticks"
@@ -926,9 +929,9 @@ msgstr "Language"
 msgid "Learn"
 msgstr "Learn"
 
-#: src/pages/Pool/CTACards.tsx
-msgid "Learn about the V3 Option Framework"
-msgstr "Learn about the V3 Option Framework"
+#: 
+#~ msgid "Learn about the V3 Option Framework"
+#~ msgstr "Learn about the V3 Option Framework"
 
 #: src/components/Header/NetworkCard.tsx
 msgid "Learn more"
@@ -1315,9 +1318,12 @@ msgid "Proposer"
 msgstr "Proposer"
 
 #: src/components/StrikeSelector/PresetsButtons.tsx
-#: src/pages/Pool/CTACards.tsx
 msgid "Protected Put"
 msgstr "Protected Put"
+
+#: src/pages/Pool/CTACards.tsx
+msgid "Put"
+msgstr "Put"
 
 #: src/pages/Vote/styled.tsx
 msgid "Queued"
@@ -1498,7 +1504,6 @@ msgid "Step 1. Get UNI-V2 Liquidity tokens"
 msgstr "Step 1. Get UNI-V2 Liquidity tokens"
 
 #: src/components/StrikeSelector/PresetsButtons.tsx
-#: src/pages/Pool/CTACards.tsx
 msgid "Straddle"
 msgstr "Straddle"
 
@@ -1849,6 +1854,10 @@ msgstr "V2 liquidity"
 #: src/pages/Swap/index.tsx
 msgid "V3"
 msgstr "V3"
+
+#: src/pages/Pool/CTACards.tsx
+msgid "V3 Option Framework"
+msgstr "V3 Option Framework"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
