@@ -77,6 +77,7 @@ import styled from 'styled-components/macro'
 import { ConsoleView } from 'react-device-detect'
 
 import Slider from '@material-ui/core/Slider';
+import ProfitChart from '../../components/ProfitCalculatorModal/ProfitCalculatorModal'
 
 const DEFAULT_ADD_IN_RANGE_SLIPPAGE_TOLERANCE = new Percent(50, 10_000)
 
@@ -938,6 +939,12 @@ export default function AddLiquidity({
                             max={250}
                             defaultValue={50} 
                             step={1}
+                          />
+
+                          <ProfitChart
+                            // strike={1500}
+                            // price={1100}
+                            // isPut={false}
                           />
 
                         </StackedItem>
