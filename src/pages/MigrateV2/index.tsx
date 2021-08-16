@@ -115,7 +115,7 @@ export default function MigrateV2() {
       <BodyWrapper style={{ padding: 24 }}>
         <AutoColumn gap="16px">
           <AutoRow style={{ alignItems: 'center', justifyContent: 'space-between' }} gap="8px">
-            <BackArrow to="/pool/v2" />
+            <BackArrow to="/options/v2" />
             <TYPE.mediumHeader>
               <Trans>Migrate V2 Liquidity</Trans>
             </TYPE.mediumHeader>

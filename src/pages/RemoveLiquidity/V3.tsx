@@ -55,7 +55,7 @@ export default function RemoveLiquidityV3({
   }, [tokenId])
 
   if (parsedTokenId === null || parsedTokenId.eq(0)) {
-    return <Redirect to={{ ...location, pathname: '/pool' }} />
+    return <Redirect to={{ ...location, pathname: '/options' }} />
   }
 
   return <Remove tokenId={parsedTokenId} />

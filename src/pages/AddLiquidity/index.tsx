@@ -448,7 +448,7 @@ export default function AddLiquidity({
       onFieldAInput('')
       // dont jump to pool page if creating
       if (!mustCreateSeparately) {
-        history.push('/pool')
+        history.push('/options')
       }
     }
     setTxHash('')
@@ -900,8 +900,7 @@ export default function AddLiquidity({
                             {!noLiquidity && (
                               <CTASection2>
                                 {price && priceUpper && 
-                                (invertPrice ? price.invert().toSignificant(6) : price.toSignificant(6)) < 
-                                (invertPrice ? priceUpper.invert().toSignificant(6) : priceUpper.toSignificant(6))
+                                (invertPrice ? price.invert().greaterThan(priceUpper.invert()) : price.greaterThan(priceUpper))
                                 ?
                                   <CoveredCall
                                     setCoveredCallRange={() => {

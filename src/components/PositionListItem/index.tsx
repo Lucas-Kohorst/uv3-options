@@ -221,7 +221,7 @@ export default function PositionListItem({ positionDetails }: PositionListItemPr
   // check if price is within range
   const outOfRange: boolean = pool ? pool.tickCurrent < tickLower || pool.tickCurrent >= tickUpper : false
 
-  const positionSummaryLink = '/pool/' + positionDetails.tokenId
+  const positionSummaryLink = '/options/' + positionDetails.tokenId
 
   const removed = liquidity?.eq(0)
 

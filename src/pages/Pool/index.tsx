@@ -10,7 +10,7 @@ import { L2_CHAIN_IDS } from 'constants/chains'
 import { useV3Positions } from 'hooks/useV3Positions'
 import { useActiveWeb3React } from 'hooks/web3'
 import { useContext } from 'react'
-import { BookOpen, ChevronDown, ChevronsRight, Inbox, Layers, PlusCircle } from 'react-feather'
+import { BookOpen, ChevronDown, ChevronsRight, Inbox, Layers, List, PlusCircle } from 'react-feather'
 import { Link } from 'react-router-dom'
 import { useWalletModalToggle } from 'state/application/hooks'
 import { useUserHideClosedPositions } from 'state/user/hooks'
@@ -174,7 +174,7 @@ export default function Pool() {
           <Layers size={16} />
         </MenuItem>
       ),
-      link: '/pool/v2',
+      link: '/options/v2',
       external: false,
     },
     {
@@ -260,44 +260,6 @@ export default function Pool() {
             </MainContentWrapper>
 
             <ResponsiveRow>
-              {showV2Features && (
-                <RowFixed>
-                  <ButtonOutlined
-                    as={Link}
-                    to="/pool/v2"
-                    id="import-pool-link"
-                    style={{
-                      padding: '8px 16px',
-                      margin: '0 4px',
-                      borderRadius: '12px',
-                      width: 'fit-content',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <Layers size={14} style={{ marginRight: '8px' }} />
-
-                    <Trans>View V2 Liquidity</Trans>
-                  </ButtonOutlined>
-                  {positions && positions.length > 0 && (
-                    <ButtonOutlined
-                      as={Link}
-                      to="/migrate/v2"
-                      id="import-pool-link"
-                      style={{
-                        padding: '8px 16px',
-                        margin: '0 4px',
-                        borderRadius: '12px',
-                        width: 'fit-content',
-                        fontSize: '14px',
-                      }}
-                    >
-                      <ChevronsRight size={16} style={{ marginRight: '8px' }} />
-
-                      <Trans>Migrate Liquidity</Trans>
-                    </ButtonOutlined>
-                  )}
-                </RowFixed>
-              )}
               {closedPositions.length > 0 ? (
                 <ShowInactiveToggle>
                   <label>

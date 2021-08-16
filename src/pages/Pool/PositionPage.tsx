@@ -556,7 +556,7 @@ export function PositionPage({
         />
         <AutoColumn gap="md">
           <AutoColumn gap="sm">
-            <Link style={{ textDecoration: 'none', width: 'fit-content', marginBottom: '0.5rem' }} to="/pool">
+            <Link style={{ textDecoration: 'none', width: 'fit-content', marginBottom: '0.5rem' }} to="/options">
               <HoverText>
                 <Trans>← Back to Options Overview</Trans>
               </HoverText>

@@ -269,12 +269,9 @@ export default function Header() {
         </UniIcon>
       </Title>
       <HeaderLinks>
-        <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-          <Trans>Swap</Trans>
-        </StyledNavLink>
         <StyledNavLink
           id={`pool-nav-link`}
-          to={'/pool'}
+          to={'/options'}
           isActive={(match, { pathname }) =>
             Boolean(match) ||
             pathname.startsWith('/add') ||
@@ -285,36 +282,14 @@ export default function Header() {
         >
           <Trans>Options</Trans>
         </StyledNavLink>
-        {chainId && chainId === SupportedChainId.MAINNET && (
-          <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-            <Trans>Vote</Trans>
-          </StyledNavLink>
-        )}
-        <StyledExternalLink id={`stake-nav-link`} href={infoLink}>
-          <Trans>Charts</Trans>
-          <sup>↗</sup>
-        </StyledExternalLink>
+        <StyledNavLink id={`swap-nav-link`} to={'/add/ETH'}>
+          <Trans>Trade</Trans>
+        </StyledNavLink>
       </HeaderLinks>
 
       <HeaderControls>
         <NetworkCard />
         <HeaderElement>
-          {availableClaim && !showClaimPopup && (
-            <UNIWrapper onClick={toggleClaimModal}>
-              <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
-                <TYPE.white padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? (
-                    <Dots>
-                      <Trans>Claiming UNI</Trans>
-                    </Dots>
-                  ) : (
-                    <Trans>Claim UNI</Trans>
-                  )}
-                </TYPE.white>
-              </UNIAmount>
-              <CardNoise />
-            </UNIWrapper>
-          )}
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>

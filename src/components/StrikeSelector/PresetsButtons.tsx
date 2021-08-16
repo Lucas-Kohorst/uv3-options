@@ -18,7 +18,7 @@ export default function CoveredCall({ setCoveredCallRange }: { setCoveredCallRan
     <AutoRow gap="4px" width="auto">
       <Button onClick={() => setCoveredCallRange()}>
         <TYPE.body fontSize={12}>
-          <Trans>Covered Call</Trans>
+          <Trans>Call</Trans>
         </TYPE.body>
       </Button>
     </AutoRow>
@@ -30,7 +30,7 @@ export function ProtectedPut({ setProtectedPutRange }: { setProtectedPutRange: (
     <AutoRow gap="4px" width="auto">
       <Button onClick={() => setProtectedPutRange()}>
         <TYPE.body fontSize={12}>
-          <Trans>Protected Put</Trans>
+          <Trans>Put</Trans>
         </TYPE.body>
       </Button>
     </AutoRow>

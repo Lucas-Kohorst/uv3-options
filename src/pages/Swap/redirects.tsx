@@ -4,9 +4,9 @@ import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { useAppDispatch } from 'state/hooks'
 import { ApplicationModal, setOpenModal } from '../../state/application/actions'
 
-// Redirects to swap but only replace the pathname
+// Redirects to pool (option) but only replace the pathname
 export function RedirectPathToSwapOnly({ location }: RouteComponentProps) {
-  return <Redirect to={{ ...location, pathname: '/swap' }} />
+  return <Redirect to={{ ...location, pathname: '/options' }} />
 }
 
 // Redirects from the /swap/:outputCurrency path to the /swap?outputCurrency=:outputCurrency format
