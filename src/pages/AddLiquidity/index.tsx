@@ -900,7 +900,7 @@ export default function AddLiquidity({
                             {!noLiquidity && (
                               <CTASection2>
                                 {price && priceUpper && 
-                                (invertPrice ? price.invert().greaterThan(priceUpper.invert()) : price.greaterThan(priceUpper))
+                                (invertPrice ? price.invert().lessThan(priceUpper.invert()) : price.lessThan(priceUpper))
                                 ?
                                   <CoveredCall
                                     setCoveredCallRange={() => {
